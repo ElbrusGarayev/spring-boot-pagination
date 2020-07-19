@@ -1,0 +1,5 @@
+# Project exclude paths
+/target/
+/spring-boot-pagination.iml
+/target/
+/.idea/

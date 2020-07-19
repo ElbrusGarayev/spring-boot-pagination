@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div th:each="user: ${users}">
+    <p th:text="${user.name}"></p>
+    <p th:text="${user.surname}"></p>
+    <p th:text="${user.year}"></p>
+</div>
+<div class="pagination">
+    <a th:if="${page>0}" th:href="@{'/?page=' + ${page - 1}}">&laquo;</a>
+    <a class="page-link" th:each="i: ${#numbers.sequence(1,totalPages)}" th:href="@{'/?page=' + ${i - 1}}">[[${i}]]</a>
+    <a th:if="${page<totalPages - 1}" th:href="@{'/?page=' + ${page + 1}}">&raquo;</a>
+</div>
+</body>
+</html>
